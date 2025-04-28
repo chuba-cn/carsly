@@ -1,0 +1,63 @@
+name: Next Build CI (Bun)
+
+on:
+  pull_request:
+    branches: [ '*' ] 
+  
+  push:
+    branches: [ 'main' ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          # Ensure we fetch the full repository history if needed (e.g., for versioning)
+          # fetch-depth: 0 # Usually not needed for just building, can speed up checkout
+
+      # Use the official Bun setup action
+      # This action handles setting up Bun and caching automatically
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1 
+        # You can specify a version if needed:
+        # with:
+        #   bun-version: latest # or a specific version like "1.0.0"
+
+      # Check environment and directory contents for debugging
+      - name: Check environment
+        run: |
+          echo "Directory contents:"
+          ls -la
+          echo "Bun version:"
+          bun -v
+          echo "Package.json content:"
+          cat package.json
+          # Check if bun.lockb exists (important for CI)
+          if [ -f bun.lockb ]; then
+            echo "bun.lockb found."
+          else
+            echo "WARNING: bun.lockb not found. Consider committing it."
+          fi
+      
+      # Install dependencies using Bun
+      # --frozen-lockfile is recommended for CI to ensure reproducible builds
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+      
+      # Run the build script defined in package.json using Bun
+      # Assumes you have a script like: "build": "next build" in your package.json
+      - name: Build Next.js app
+        run: bun run build 
+        # Alternatively, if you don't have a build script:
+        # run: bunx next build 
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: next-build
+          path: .next/
+          retention-days: 7 
