@@ -1,0 +1,13 @@
+model PageView {
+  id        Int      @id @default(autoincrement())
+  path      String
+  viewedAt  DateTime @default(now()) @map("viewed_at")
+  userAgent String?  @map("user_agent")
+  ipAddress String?  @map("ip_address")
+  referrer  String?
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@index([path, viewedAt])
+  @@map("page_views")
+}
