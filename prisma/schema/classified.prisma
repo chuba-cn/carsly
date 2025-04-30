@@ -8,7 +8,7 @@ model Classified {
   year           Int
   odoReading     Int              @default(0) @map("odo_reading")
   doors          Int              @default(2)
-  seates         Int              @default(5)
+  seats          Int              @default(5)
   price          Int              @default(0) @map("price")
   makeId         Int              @map("make_id")
   make           Make             @relation(fields: [makeId], references: [id])
