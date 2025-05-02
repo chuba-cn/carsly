@@ -6,7 +6,10 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "seed": "prisma db seed",
+    "db-push": "prisma db push",
+    "generate": "prisma generate"
   },
   "prisma": {
     "schema": "./prisma/schema",
