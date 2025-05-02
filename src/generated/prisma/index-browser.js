@@ -105,6 +105,8 @@ Prisma.NullTypes = {
 }
 
 
+Prisma.skip = skip
+
 
 /**
  * Enums
@@ -117,10 +119,114 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
+exports.Prisma.ClassifiedScalarFieldEnum = {
+  id: 'id',
+  views: 'views',
+  slug: 'slug',
+  vin: 'vin',
+  title: 'title',
+  description: 'description',
+  year: 'year',
+  odoReading: 'odoReading',
+  doors: 'doors',
+  seats: 'seats',
+  price: 'price',
+  makeId: 'makeId',
+  modelId: 'modelId',
+  modelVariantId: 'modelVariantId',
+  ulezCompliance: 'ulezCompliance',
+  transmission: 'transmission',
+  colour: 'colour',
+  bodyType: 'bodyType',
+  fuelType: 'fuelType',
+  odoUnit: 'odoUnit',
+  currency: 'currency',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.CustomerScalarFieldEnum = {
+  id: 'id',
+  firstName: 'firstName',
+  lastName: 'lastName',
+  email: 'email',
+  mobile: 'mobile',
+  bookingDate: 'bookingDate',
+  termsAccepted: 'termsAccepted',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  classifiedId: 'classifiedId'
+};
+
+exports.Prisma.CustomerLifecycleScalarFieldEnum = {
+  id: 'id',
+  customerId: 'customerId',
+  oldStatus: 'oldStatus',
+  newStatus: 'newStatus',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.ImageScalarFieldEnum = {
+  id: 'id',
+  alt: 'alt',
+  src: 'src',
+  classifiedId: 'classifiedId',
+  blurhash: 'blurhash',
+  isMain: 'isMain'
+};
+
+exports.Prisma.PageViewScalarFieldEnum = {
+  id: 'id',
+  path: 'path',
+  viewedAt: 'viewedAt',
+  userAgent: 'userAgent',
+  ipAddress: 'ipAddress',
+  referrer: 'referrer',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.SessionScalarFieldEnum = {
+  id: 'id',
+  sessionToken: 'sessionToken',
+  userId: 'userId',
+  expiresAt: 'expiresAt',
+  requires2FA: 'requires2FA'
+};
+
+exports.Prisma.MakeScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  image: 'image',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.ModelScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  makeId: 'makeId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.ModelVariantScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  modelId: 'modelId',
+  yearStart: 'yearStart',
+  yearEnd: 'yearEnd',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
   email: 'email',
-  password: 'password',
+  hashedPassword: 'hashedPassword',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -135,8 +241,88 @@ exports.Prisma.QueryMode = {
   insensitive: 'insensitive'
 };
 
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
+};
+exports.ULEZCOMPLIANCE = exports.$Enums.ULEZCOMPLIANCE = {
+  EXEMPT: 'EXEMPT',
+  NON_EXEMPT: 'NON_EXEMPT'
+};
+
+exports.Transmission = exports.$Enums.Transmission = {
+  MANUAL: 'MANUAL',
+  AUTOMATIC: 'AUTOMATIC'
+};
+
+exports.Colour = exports.$Enums.Colour = {
+  BLACK: 'BLACK',
+  BLUE: 'BLUE',
+  BROWN: 'BROWN',
+  GOLD: 'GOLD',
+  GREEN: 'GREEN',
+  GREY: 'GREY',
+  ORANGE: 'ORANGE',
+  PINK: 'PINK',
+  PURPLE: 'PURPLE',
+  RED: 'RED',
+  SILVER: 'SILVER',
+  WHITE: 'WHITE',
+  YELLOW: 'YELLOW'
+};
+
+exports.BodyType = exports.$Enums.BodyType = {
+  SEDAN: 'SEDAN',
+  HATCHBACK: 'HATCHBACK',
+  SUV: 'SUV',
+  COUPE: 'COUPE',
+  CONVERTIBLE: 'CONVERTIBLE',
+  WAGON: 'WAGON'
+};
+
+exports.FuelType = exports.$Enums.FuelType = {
+  PETROL: 'PETROL',
+  DIESEL: 'DIESEL',
+  ELECTRIC: 'ELECTRIC',
+  HYBRID: 'HYBRID'
+};
+
+exports.OdoUnit = exports.$Enums.OdoUnit = {
+  MILES: 'MILES',
+  KILOMETERS: 'KILOMETERS'
+};
+
+exports.CurrencyCode = exports.$Enums.CurrencyCode = {
+  GBP: 'GBP',
+  EUR: 'EUR',
+  USD: 'USD',
+  NGN: 'NGN'
+};
+
+exports.ClassifiedStatus = exports.$Enums.ClassifiedStatus = {
+  LIVE: 'LIVE',
+  DRAFT: 'DRAFT',
+  SOLD: 'SOLD'
+};
+
+exports.CustomerStatus = exports.$Enums.CustomerStatus = {
+  INTERESTED: 'INTERESTED',
+  SUBSCRIBER: 'SUBSCRIBER',
+  CONTACTED: 'CONTACTED',
+  PURCHASED: 'PURCHASED',
+  COLD: 'COLD'
+};
 
 exports.Prisma.ModelName = {
+  Classified: 'Classified',
+  Customer: 'Customer',
+  CustomerLifecycle: 'CustomerLifecycle',
+  Image: 'Image',
+  PageView: 'PageView',
+  Session: 'Session',
+  Make: 'Make',
+  Model: 'Model',
+  ModelVariant: 'ModelVariant',
   User: 'User'
 };
 

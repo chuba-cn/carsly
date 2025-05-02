@@ -2,16 +2,11 @@ model Customer {
   id            Int            @id @default(autoincrement())
   firstName     String         @map("first_name")
   lastName      String         @map("last_name")
-model Customer {
-  id            Int            @id @default(autoincrement())
-  firstName     String         @map("first_name")
-  lastName      String         @map("last_name")
   email         String         @unique
   mobile        String?
   bookingDate   DateTime?      @map("booking_date")
   termsAccepted Boolean        @default(false) @map("terms_accepted")
   status        CustomerStatus @default(INTERESTED)
-}
   createdAt     DateTime       @default(now()) @map("created_at")
   updatedAt     DateTime       @updatedAt @map("updated_at")
   Classified    Classified?    @relation(fields: [classifiedId], references: [id])
