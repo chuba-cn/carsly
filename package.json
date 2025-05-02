@@ -16,6 +16,7 @@
     "seed": "ts-node -r tsconfig-paths/register --compiler-options {\"module\":\"CommonJS\"} prisma/seed/seed.ts"
   },
   "dependencies": {
+    "@faker-js/faker": "^9.7.0",
     "@prisma/client": "^6.6.0",
     "@radix-ui/react-dialog": "^1.1.11",
     "@radix-ui/react-select": "^2.2.2",
@@ -29,14 +30,17 @@
     "prisma": "^6.6.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "slugify": "^1.6.6",
     "sonner": "^2.0.3",
-    "tailwind-merge": "^3.2.0"
+    "tailwind-merge": "^3.2.0",
+    "unlazy": "^0.12.4"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "@types/node": "^22.15.3",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@types/slug": "^5.0.9",
     "tailwindcss": "^4",
     "ts-node": "^10.9.2",
     "tsconfig-paths": "^4.2.0",
