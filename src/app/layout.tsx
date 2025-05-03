@@ -25,6 +25,13 @@ export const metadata: Metadata = {
   description: "A next generation car dealer web app built and fused with AI",
 };
 
+/**
+ * Defines the root layout for the Next.js application, applying global styles, fonts, and UI providers.
+ *
+ * Wraps all pages with font variables, a top loading bar, notification toasts, and Nuqs integration.
+ *
+ * @param children - The content to render within the layout.
+ */
 export default function RootLayout({
   children,
 }: Readonly<{

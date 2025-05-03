@@ -6,6 +6,14 @@ interface ClassifiedListProps {
   classifieds: ClassifiedWithImages[];
 }
 
+/**
+ * Displays a responsive grid of classified ads using the provided list.
+ *
+ * Renders each classified ad as a {@link ClassifiedCard} within a grid layout that adapts to different screen sizes.
+ *
+ * @param props.classifieds - Array of classified ad objects to display.
+ * @returns A JSX element containing the grid of classified cards.
+ */
 function ClassifiedList(props: ClassifiedListProps) {
   const { classifieds } = props;
 

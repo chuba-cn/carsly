@@ -17,6 +17,14 @@ interface ClassifiedCardProps {
   classified: ClassifiedWithImages;
 }
 
+/**
+ * Returns an array of key information items for a classified, each with an icon and formatted value.
+ *
+ * Each item represents a specific attribute of the classified, such as odometer reading, transmission, fuel type, or color. If a value is missing, it is set to null.
+ *
+ * @param classified - The classified advertisement object containing vehicle details.
+ * @returns An array of objects with `id`, `icon`, and formatted `value` for display.
+ */
 function getKeyClassifiedInfo(classified: ClassifiedWithImages) {
   return [
     {
@@ -46,6 +54,13 @@ function getKeyClassifiedInfo(classified: ClassifiedWithImages) {
   ];
 }
 
+/**
+ * Renders a card displaying a classified advertisement with image, price, title, description, key vehicle details, and action buttons.
+ *
+ * The card includes a clickable image linking to the classified's detail page, a price badge, the title and description, a list of key attributes (such as odometer, transmission, fuel type, and color), and buttons to reserve or view more details.
+ *
+ * @param props - Contains the classified advertisement data to display.
+ */
 function ClassifiedCard(props: ClassifiedCardProps) {
   const { classified } = props;
 
