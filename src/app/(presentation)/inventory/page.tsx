@@ -1,28 +1,35 @@
-import ClassifiedCard from '@/components/inventory/classified-card';
-import ClassifiedList from '@/components/inventory/classified-list';
-import { AwaitedPageProps, PageProps } from '@/config/types';
-import { prisma } from '@/lib/prisma';
-import React from 'react';
+import ClassifiedList from "@/components/inventory/classified-list";
+import { AwaitedPageProps, Favourites, PageProps } from "@/config/types";
+import { prisma } from "@/lib/prisma";
+import { redis } from "@/lib/redis-store";
+import { getSourceId } from "@/lib/source-id";
+import React from "react";
 
-const getInventory = async (searchParams: AwaitedPageProps[ 'searchParams' ]) => {
+const getInventory = async (searchParams: AwaitedPageProps["searchParams"]) => {
   return prisma.classified.findMany({
     include: {
-      images: true
-    }
+      images: true,
+    },
   });
-}
+};
 
 const InventoryPage = async (props: PageProps) => {
   const searchParams = await props.searchParams;
-  
+
+  const sourceId = await getSourceId();
+  const favourites = await redis.get<Favourites>(sourceId ?? "");
+
   const classifieds = await getInventory(searchParams);
-  const count = await prisma.classified.count()
+  // const count = await prisma.classified.count();
 
   return (
     <>
-     <ClassifiedList classifieds={classifieds}/>
+      <ClassifiedList
+        classifieds={classifieds}
+        favourites={favourites ? favourites.ids : []}
+      />
     </>
-  )
-}
+  );
+};
 
-export default InventoryPage
+export default InventoryPage;
