@@ -170,7 +170,6 @@ function CustomPagination(props: CustomPaginationProps) {
               }}
             />
           </PaginationItem>
-          </PaginationItem>
         </PaginationContent>
       </PaginationRoot>
     </div>
