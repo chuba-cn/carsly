@@ -82,6 +82,7 @@ function CustomPagination(props: CustomPaginationProps) {
               )}
               href={createPageUrl(currentPage - 1)}
               onClick={(e) => {
+                e.preventDefault();
                 if (currentPage > 1) void setCurrentPage(currentPage - 1);
               }}
             />
