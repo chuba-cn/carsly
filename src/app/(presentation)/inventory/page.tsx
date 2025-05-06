@@ -8,6 +8,7 @@ import CustomPagination from "@/components/shared/custom-pagination";
 import {routes} from "@/config/routes";
 import { z } from "zod";
 import { CLASSIFIED_PER_PAGE } from "@/config/constants";
+import Sidebar from "@/components/inventory/sidebar";
 
 const PageSchema = z.string().transform((value) => Math.max(Number(value), 1)).optional();
 
@@ -39,7 +40,7 @@ const InventoryPage = async (props: PageProps) => {
 
   return (
     <div className={"flex"}>
-      {/*<Sidebar />*/}
+      <Sidebar minMaxValues={null} searchParams={searchParams}/>
       <div className="flex-1 p-4 bg-white">
         <div className="flex space-y-2 flex-col items-center justify-center pb-4 -mt-1">
           <div className="flex justify-between items-center w-full">
