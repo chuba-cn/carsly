@@ -1,3 +1,4 @@
 export const endpoints = {
-  favourites: "/api/favourites",
-}
+	favourites: "/api/favourites",
+	taxonomy: "/api/taxonomy",
+};
