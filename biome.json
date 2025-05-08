@@ -7,7 +7,18 @@
 	},
 	"files": {
 		"ignoreUnknown": false,
-		"ignore": []
+		"ignore": [
+			"node_modules/**",
+			".next/**",
+			"dist/**",
+			"build/**",
+			"public/**",
+			"**/*.min.js",
+			"**/coverage/**",
+			"**/.vercel/**",
+			"**/.cache/**",
+			"src/generated/**"
+		]
 	},
 	"formatter": {
 		"enabled": true,
@@ -19,7 +30,13 @@
 	"linter": {
 		"enabled": true,
 		"rules": {
-			"recommended": true
+			"recommended": true,
+			"suspicious": {
+				"noArrayIndexKey": "error"
+			},
+			"a11y": {
+				"useButtonType": "warn"
+			}
 		}
 	},
 	"javascript": {

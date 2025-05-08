@@ -1,11 +1,11 @@
-import React from 'react'
+import type React from "react";
 
 function PresentationLayout({
-  children,
+	children,
 }: Readonly<{
-  children: React.ReactNode;
+	children: React.ReactNode;
 }>) {
-  return <div>{ children }</div>;
+	return <div>{children}</div>;
 }
 
-export default PresentationLayout
+export default PresentationLayout;
